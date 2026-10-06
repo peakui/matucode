@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.peakui</groupId>
+        <artifactId>matu-backend</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>service</artifactId>
+    <packaging>pom</packaging>
+    <modules>
+        <module>service-auth</module>
+        <module>service-post</module>
+        <module>service-qa</module>
+        <module>service-oj</module>
+        <module>service-interview</module>
+        <module>service-file</module>
+        <module>service-course</module>
+        <module>service-check</module>
+        <module>service-message</module>
+        <module>service-pay</module>
+        <module>service-info</module>
+        <module>service-ai</module>
+        <module>service-search</module>
+        <module>service-mcp</module>
+    </modules>
+
+    <properties>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+</project>

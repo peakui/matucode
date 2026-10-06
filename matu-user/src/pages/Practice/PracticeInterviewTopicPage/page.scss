@@ -1,0 +1,73 @@
+.practice-interview-topic-page {}
+
+.practice-interview-topic__hero {
+  padding: 8px !important;
+}
+
+.practice-interview-topic__hero-main {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.practice-interview-topic__logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 88px;
+  height: 88px;
+  border-radius: 24px;
+  background: color-mix(in srgb, var(--primary) 10%, var(--bg-secondary));
+  font-size: 42px;
+}
+
+.practice-interview-topic__hero-copy {
+  flex: 1;
+}
+
+.practice-interview-topic__hero-copy h1 {
+  margin: 4px 0 12px;
+  color: var(--text-primary);
+  font-size: 34px;
+}
+
+.practice-interview-topic__hero-copy p {
+  margin: 0 0 18px;
+  color: var(--text-secondary);
+  line-height: 1.85;
+}
+
+.practice-interview-topic__toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.practice-interview-topic__toolbar-title {
+  color: var(--text-primary);
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.practice-interview-topic__question-btn {
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: var(--text-primary);
+  text-align: left;
+  cursor: pointer;
+}
+
+.practice-interview-topic__question-btn:hover {
+  color: var(--primary);
+}
+
+@media (max-width: 768px) {
+  .practice-interview-topic__hero-main,
+  .practice-interview-topic__toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}

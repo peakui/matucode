@@ -1,0 +1,89 @@
+@use '@/styles/variables.scss' as *;
+
+.auth-manage-page {
+  display: grid;
+  gap: 20px;
+
+  &__filter {
+    .filter-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(180px, 1fr)) auto auto;
+      gap: 12px;
+      align-items: center;
+    }
+  }
+}
+
+.table-pagination {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 18px;
+}
+
+.certification-detail {
+  display: grid;
+  gap: 16px;
+
+  &__block {
+    display: grid;
+    gap: 10px;
+    padding: 16px;
+    border: 1px solid rgba(148, 163, 184, 0.22);
+    border-radius: 14px;
+    background: #f8fafc;
+
+    strong {
+      color: $text-color;
+      font-size: 14px;
+    }
+
+    p {
+      margin: 0;
+      color: $text-secondary;
+      line-height: 1.7;
+      word-break: break-all;
+    }
+  }
+
+  &__block-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  &__proof {
+    width: 240px;
+    height: 160px;
+    overflow: hidden;
+    border-radius: 12px;
+    border: 1px solid rgba(148, 163, 184, 0.24);
+    background: #fff;
+  }
+
+  &__proof-link {
+    padding: 12px;
+    border-radius: 10px;
+    background: #fff;
+  }
+}
+
+.review-form {
+  padding: 16px;
+  border: 1px solid rgba(59, 130, 246, 0.18);
+  border-radius: 14px;
+  background: rgba(59, 130, 246, 0.06);
+}
+
+@media (max-width: 960px) {
+  .auth-manage-page__filter .filter-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .table-pagination,
+  .certification-detail__block-head {
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

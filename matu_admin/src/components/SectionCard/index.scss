@@ -1,0 +1,21 @@
+.section-card {
+  border: none;
+  border-radius: 14px;
+
+  &__header {
+    margin-bottom: 16px;
+
+    h3 {
+      margin: 0 0 8px;
+      color: #101828;
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    p {
+      margin: 0;
+      color: #667085;
+      line-height: 1.7;
+    }
+  }
+}

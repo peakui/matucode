@@ -1,0 +1,67 @@
+# Keep this file ASCII-only: see shared-common.yml for why.
+server:
+  port: 9009
+
+spring:
+  # Schema predates Flyway: baseline at 0 so Flyway records history without
+  # re-creating existing tables. New migrations start at V2.
+  flyway:
+    baseline-on-migrate: true
+    baseline-version: 0
+  datasource:
+    url: jdbc:mysql://${MYSQL_HOST:127.0.0.1}:${MYSQL_PORT:3306}/matu_pay?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai
+    username: ${MYSQL_USERNAME:root}
+    password: ${MYSQL_PASSWORD:}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  data:
+    redis:
+      # host / port / password / timeout are provided by shared-common.yml
+      database: 2
+
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+sa-token:
+  token-name: Authorization
+  token-prefix: Bearer
+  timeout: 2592000
+  active-timeout: -1
+  is-share: true
+  is-read-header: true
+  is-read-cookie: false
+  is-log: true
+
+  alone-redis:
+    database: 0
+    host: ${REDIS_HOST:127.0.0.1}
+    port: ${REDIS_PORT:6379}
+
+# Internal credential service-pay uses to call service-auth for VIP activation.
+# Must match VIP_SERVICE_TOKEN in service-auth and service-interview.
+security:
+  vip:
+    service-token: ${VIP_SERVICE_TOKEN:}
+
+pay:
+  alipay:
+    app-id: ${ALIPAY_APP_ID:your-alipay-app-id}
+
+    merchant-private-key: ${ALIPAY_MERCHANT_PRIVATE_KEY:your-merchant-private-key}
+
+    alipay-public-key: ${ALIPAY_PUBLIC_KEY:your-alipay-public-key}
+
+    gateway-url: ${ALIPAY_GATEWAY_URL:https://openapi-sandbox.dl.alipaydev.com/gateway.do}
+
+    # Alipay's server must be able to reach this address.
+    # localhost only works for local development or when not receiving real
+    # Alipay async callbacks.
+    notify-url: ${ALIPAY_NOTIFY_URL:http://localhost:8080/pay/alipay/notify}
+
+    # After web payment completes, return to the existing membership page.
+    return-url: ${ALIPAY_RETURN_URL:http://localhost:5173/membership}
+
+    sign-type: RSA2
+    charset: UTF-8
+    format: json

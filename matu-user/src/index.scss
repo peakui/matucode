@@ -1,0 +1,278 @@
+/* =========================
+   Theme tokens
+========================= */
+:root {
+  --primary: #2563eb;
+  --primary-hover: #1d4ed8;
+  --secondary: #3b82f6;
+  --accent: #f59e0b;
+  --success: #10b981;
+  --warning: #ef4444;
+
+  --bg-main: #ffffff;
+  --bg-secondary: #ffffff;
+  --bg-card: #ffffff;
+
+  --text-primary: #333333;
+  --text-secondary: #4b5563;
+  --border: #d1d5db;
+
+  --shadow: 0 4px 6px -1px rgb(0 0 0 / 10%);
+  --shadow-lg: 0 20px 40px -12px rgb(15 23 42 / 12%);
+  --radius: 18px;
+  --content-width: 1200px;
+
+  font-family: 'Noto Sans SC', 'Microsoft YaHei', sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color: var(--text-primary);
+  background: #ffffff;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+[data-theme='dark'] {
+  --primary: #60a5fa;
+  --primary-hover: #93c5fd;
+  --secondary: #3b82f6;
+  --accent: #fbbf24;
+  --success: #34d399;
+  --warning: #f87171;
+
+  --bg-main: #000000;
+  --bg-secondary: #121212;
+  --bg-card: #121212;
+
+  --text-primary: #f5f5f5;
+  --text-secondary: #d1d5db;
+  --border: #2a2a2a;
+
+  --shadow: 0 4px 6px -1px rgb(0 0 0 / 55%);
+  --shadow-lg: 0 20px 40px -12px rgb(0 0 0 / 72%);
+}
+
+/* =========================
+   Reset & base
+========================= */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+  margin: 0;
+}
+
+html,
+body,
+#root,
+.ant-app {
+  background: var(--bg-main) !important;
+}
+
+body {
+  min-width: 0;
+  color: var(--text-primary) !important;
+}
+
+body[data-theme='dark'] {
+  background: var(--bg-main) !important;
+  color: var(--text-primary) !important;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/* =========================
+   Utility classes
+========================= */
+.full-width {
+  width: 100%;
+}
+
+.theme-transition,
+.theme-transition * {
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+/* =========================
+   Ant Design global overrides
+========================= */
+.ant-app,
+.ant-layout,
+.ant-pro-layout,
+.ant-pro-page-container,
+.ant-pro-page-container-children-container {
+  background: transparent !important;
+}
+
+.ant-input::placeholder,
+.ant-input-password input::placeholder,
+textarea::placeholder {
+  color: var(--text-secondary) !important;
+}
+
+.ant-btn,
+.ant-typography,
+.ant-card,
+.ant-card-head-title,
+.ant-form,
+.ant-form-item,
+.ant-input,
+.ant-input-password,
+.ant-checkbox-wrapper,
+span,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: inherit;
+}
+
+.ant-btn-primary,
+/* antd v6 renders `Input.Search`'s enterButton via the color/variant API, so it
+   carries these classes instead of `.ant-btn-primary`. */
+.ant-btn-color-primary.ant-btn-variant-solid,
+.ant-btn-primary span,
+.ant-btn-color-primary.ant-btn-variant-solid span,
+.ant-btn-primary .anticon,
+.ant-btn-color-primary.ant-btn-variant-solid .anticon,
+.ant-btn-primary .anticon svg,
+.ant-btn-color-primary.ant-btn-variant-solid .anticon svg {
+  color: #fff !important;
+  fill: currentcolor;
+}
+
+/* =========================
+   Shared surface styles
+========================= */
+.card-surface,
+.content-card,
+.side-card,
+.composer-card,
+.course-card,
+.practice-card,
+.interview-card,
+.filter-card,
+.interview-list-card,
+.interview-side-card,
+.auth-card {
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius) !important;
+  box-shadow: var(--shadow-lg) !important;
+  background: var(--bg-card) !important;
+}
+
+.problem-link-btn {
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.problem-link-btn:hover {
+  color: var(--primary);
+}
+
+/* =========================
+   Auth shared shell
+========================= */
+.auth-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 16px;
+  background: transparent;
+}
+
+.auth-page__panel {
+  width: min(1120px, 100%);
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 24px;
+  align-items: stretch;
+}
+
+.auth-page__hero {
+  padding: 28px;
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  background: var(--bg-card);
+  box-shadow: var(--shadow-lg);
+}
+
+.auth-page__hero .ant-typography,
+.auth-page__hero .ant-typography *,
+.auth-page__hero,
+.auth-card label,
+.auth-card .ant-form-item-label > label,
+.auth-card .ant-checkbox-wrapper,
+.auth-card .ant-typography,
+.auth-card .ant-input-show-count-suffix,
+.auth-card .ant-input-prefix,
+.auth-card .ant-input-password-icon {
+  color: var(--text-primary) !important;
+}
+
+.auth-card {
+  padding: 8px !important;
+}
+
+.auth-bullets {
+  margin-top: 20px;
+}
+
+.auth-back-link {
+  display: inline-block;
+  margin-top: 18px;
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.auth-form-row {
+  margin-top: 8px;
+}
+
+/* =========================
+   Auth shared responsive
+========================= */
+@media (max-width: 992px) {
+  .auth-page__panel {
+    grid-template-columns: 1fr;
+    padding: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .auth-page__panel,
+  .auth-form-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .auth-page__hero {
+    padding: 16px;
+  }
+}

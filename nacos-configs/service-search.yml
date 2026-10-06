@@ -1,0 +1,36 @@
+# Keep this file ASCII-only: see shared-common.yml for why.
+server:
+  port: 8092
+
+spring:
+  cloud:
+    nacos:
+      discovery:
+        # Same reason as shared-common.yml: this service deliberately skips that
+        # file, so pin the advertised IP here to avoid registering a VMware
+        # virtual adapter address the gateway cannot reach.
+        ip: ${NACOS_DISCOVERY_IP:127.0.0.1}
+
+# This service has no redis / mybatis / datasource, so it does not import
+# shared-common.yml (importing it would be a no-op).
+search:
+  elasticsearch:
+    # Elasticsearch Docker service name / address
+    url: ${ES_URL:http://127.0.0.1:9200}
+
+    # Search index alias
+    index: ${ES_INDEX:matu_public_content}
+
+    # Elasticsearch security is currently disabled, so leave these empty
+    username: ""
+    password: ""
+
+  sync:
+    # Must match SEARCH_SYNC_TOKEN in the business services
+    token: ${SEARCH_SYNC_TOKEN:}
+
+    # Sync public content every 30 minutes
+    fixed-delay-ms: 1800000
+
+    # First sync 30 seconds after startup
+    initial-delay-ms: 30000

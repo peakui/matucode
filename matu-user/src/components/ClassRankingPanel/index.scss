@@ -1,0 +1,69 @@
+.class-ranking-panel {
+  width: 100%;
+}
+
+.class-ranking-panel__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.class-ranking-panel__header h3 {
+  margin: 6px 0 0;
+  color: var(--text-primary);
+}
+
+.class-ranking-panel__tip {
+  margin-top: 14px;
+  color: var(--text-secondary);
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.class-ranking-loading {
+  display: flex;
+  justify-content: center;
+  padding: 40px 0;
+}
+
+.class-ranking-user {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.class-ranking-user__name {
+  font-weight: 600;
+}
+
+.class-ranking-cell {
+  font-variant-numeric: tabular-nums;
+}
+
+.class-ranking-cell--solved {
+  color: #16a34a;
+  font-weight: 700;
+}
+
+.class-ranking-cell--solved small {
+  margin-left: 4px;
+  color: var(--text-secondary);
+  font-weight: 400;
+}
+
+.class-ranking-cell--failed {
+  color: #dc2626;
+  font-weight: 600;
+}
+
+.class-ranking-cell--empty {
+  color: var(--text-secondary);
+}
+
+@media (max-width: 768px) {
+  .class-ranking-panel__header {
+    flex-direction: column;
+  }
+}

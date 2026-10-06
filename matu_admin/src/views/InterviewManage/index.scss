@@ -1,0 +1,71 @@
+@use '@/styles/variables.scss' as *;
+
+.interview-manage-page {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.filter-grid,
+.form-grid,
+.detail-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.form-block,
+.detail-panel__item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-block {
+  margin-top: 16px;
+
+  span {
+    color: $text-secondary;
+    font-size: 13px;
+  }
+}
+
+.detail-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  &__item {
+    span {
+      color: $text-secondary;
+      font-size: 13px;
+    }
+
+    strong,
+    p {
+      margin: 0;
+      color: $text-color;
+      line-height: 1.7;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+  }
+}
+
+.table-pagination,
+.dialog-footer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.table-pagination {
+  margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+  .filter-grid,
+  .form-grid,
+  .detail-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,88 @@
+@use '@/styles/variables.scss' as *;
+
+.announcement-manage-page {
+  display: grid;
+  gap: 20px;
+
+  &__filter,
+  &__table {
+    border: none;
+    border-radius: 14px;
+    box-shadow: $shadow-base;
+  }
+
+  &__table {
+    .el-card__body {
+      padding-bottom: 18px;
+    }
+  }
+}
+
+.filter-toolbar {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.filter-grid,
+.announcement-form__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.announcement-form {
+  .el-date-editor.el-input,
+  .el-input-number {
+    width: 100%;
+  }
+}
+
+.dialog-footer,
+.table-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.table-pagination {
+  margin-top: 18px;
+}
+
+.announcement-detail {
+  display: grid;
+  gap: 16px;
+
+  &__item {
+    display: grid;
+    gap: 8px;
+
+    span {
+      color: $text-secondary;
+      font-size: 13px;
+    }
+
+    strong,
+    p {
+      margin: 0;
+      color: $text-color;
+      line-height: 1.7;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+  }
+}
+
+@media (max-width: 960px) {
+  .filter-toolbar,
+  .filter-grid,
+  .announcement-form__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .table-pagination {
+    justify-content: flex-start;
+    overflow-x: auto;
+  }
+}

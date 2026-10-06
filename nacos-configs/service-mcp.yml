@@ -1,0 +1,38 @@
+# ==========================================================================
+# service-mcp - internal MCP tool server for service-ai
+#   dataId: service-mcp.yml    group: nacos
+#
+# Exposes read-only course / OJ / web-fetch / web-search tools over a single
+# JSON-RPC endpoint (POST /mcp). Not routed by the gateway: it is called only by
+# service-ai, so it authenticates the caller with a shared Bearer token.
+#
+# Keep this file ASCII-only: see shared-common.yml for the GBK parsing note.
+# ==========================================================================
+server:
+  port: 9013
+
+service-mcp:
+  mcp:
+    # Shared secret service-ai sends as "Authorization: Bearer <token>".
+    # Must match ai.mcp.servers[].api-key in service-ai.yml.
+    token: ${MCP_SERVICE_TOKEN:}
+
+  # Timeout for calls to service-course / service-oj through Nacos discovery.
+  downstream-timeout-ms: 8000
+
+  web-fetch:
+    max-bytes: 1048576
+    max-chars: 20000
+    timeout-ms: 8000
+    max-redirects: 3
+
+  # Bocha Web Search. api-key comes from the BOCHA_API_KEY env var; when blank
+  # the web_search tool reports "未配置搜索服务密钥" instead of failing the call.
+  web-search:
+    api-key: ${BOCHA_API_KEY:}
+    endpoint: https://api.bochaai.com/v1/web-search
+    count: 8
+    freshness: noLimit
+    summary: true
+    timeout-ms: 8000
+    max-chars: 8000

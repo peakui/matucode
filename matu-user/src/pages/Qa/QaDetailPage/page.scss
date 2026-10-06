@@ -1,0 +1,83 @@
+@use '../../Article/ArticlePage/page';
+
+.qa-detail-shell {
+  width: 100%;
+}
+
+.qa-detail-page {
+  width: 100%;
+  margin: 0;
+}
+
+.qa-detail-page > .ant-col {
+  min-width: 0;
+}
+
+.qa-detail-shell .article-main-card,
+.qa-detail-shell .article-side-card {
+  width: 100%;
+}
+
+.qa-detail-shell .article-content-block--markdown {
+  overflow: hidden;
+}
+
+.qa-detail-shell .article-preview-markdown,
+.qa-detail-shell .article-preview-markdown .wmde-markdown {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+.qa-detail-shell .article-comment-list,
+.qa-detail-shell .article-comment-item,
+.qa-detail-shell .article-comment-item__body,
+.qa-detail-shell .article-comment-editor__main {
+  min-width: 0;
+}
+
+.qa-detail-shell .article-comment-item__content {
+  white-space: pre-wrap;
+}
+
+.qa-detail-shell .qa-answer-editor {
+  min-width: 0;
+}
+
+.qa-detail-shell .qa-answer-item__top {
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.qa-detail-shell .qa-answer-item__author {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  min-width: 0;
+}
+
+.qa-detail-shell .qa-answer-item__author .ant-tag {
+  margin-inline-end: 0;
+}
+
+@media (max-width: 1600px) {
+  .qa-detail-shell .article-floating-rail {
+    display: none;
+  }
+}
+
+@media (max-width: 992px) {
+  .qa-detail-shell .article-back-row,
+  .qa-detail-shell .article-comment-section__header,
+  .qa-detail-shell .article-comment-section__summary,
+  .qa-detail-shell .article-comment-editor {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .qa-detail-shell .article-comment-section__actions,
+  .qa-detail-shell .article-comment-section__actions--editor {
+    justify-content: flex-start;
+  }
+}

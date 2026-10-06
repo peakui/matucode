@@ -1,0 +1,6 @@
+-- Baseline marker (no DDL).
+--
+-- This schema (PostgreSQL) existed before Flyway was enabled, so the service is
+-- configured with baseline-on-migrate=true and baseline-version=0 in its Nacos
+-- config: on the first start Flyway records flyway_schema_history and then
+-- applies this no-op V1. Add future schema changes as V2__*.sql.

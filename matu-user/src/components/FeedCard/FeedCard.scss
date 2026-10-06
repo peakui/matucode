@@ -1,0 +1,163 @@
+.feed-card-link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.feed-card {
+  padding: 0 !important;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.feed-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px rgb(15 23 42 / 10%);
+}
+
+.feed-card__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.feed-card__author-block {
+  flex: 1;
+
+  img {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.feed-card__avatar-link {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.feed-card__author-info {
+  min-width: 0;
+}
+
+.feed-card__actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.feed-card__author-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.feed-card__author-name {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.feed-card__author-badge {
+  margin-inline-end: 0;
+  border-radius: 999px;
+  font-size: 12px;
+  line-height: 20px;
+}
+
+.feed-card__meta {
+  margin-top: 4px;
+  color: var(--text-secondary);
+  font-size: 12px;
+}
+
+.feed-card__body {
+  margin-top: 14px;
+}
+
+.feed-card__title {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+.feed-card__content {
+  color: var(--text-primary);
+  font-size: 16px;
+  line-height: 1.85;
+}
+
+.feed-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.feed-card__gallery {
+  display: grid;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.feed-card__gallery.images-1 {
+  grid-template-columns: 1fr;
+  justify-items: start;
+}
+
+.feed-card__gallery.images-1 .feed-card__image {
+  max-width: 160px;
+}
+
+.feed-card__gallery.images-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.feed-card__image,
+.feed-card__image img {
+  width: 100%;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.feed-card__footer {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+.detail-link-title {
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.feed-card-link:hover .detail-link-title {
+  color: var(--primary);
+}
+
+@media (max-width: 768px) {
+  .feed-card__content {
+    font-size: 15px;
+  }
+
+  .feed-card__gallery.images-2 {
+    grid-template-columns: 1fr;
+  }
+
+  .feed-card__image,
+  .feed-card__image img {
+    height: 80px;
+  }
+
+  .feed-card__header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}

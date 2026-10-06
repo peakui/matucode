@@ -1,0 +1,72 @@
+@use '@/styles/variables.scss' as *;
+
+.ai-manage-page {
+  display: grid;
+  gap: 20px;
+
+  &__status,
+  &__content {
+    border: none;
+    border-radius: 14px;
+    box-shadow: $shadow-base;
+  }
+}
+
+.ai-status {
+  display: grid;
+  gap: 16px;
+
+  &__badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  &__warning {
+    padding: 10px 14px;
+    border-radius: 10px;
+    background: rgba(245, 108, 108, 0.1);
+    color: #f56c6c;
+    font-size: 13px;
+  }
+}
+
+.filter-toolbar {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.message-filter {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.section-subtitle {
+  margin: 8px 0 12px;
+  font-size: 15px;
+  font-weight: 600;
+  color: $text-color;
+}
+
+.table-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: 18px;
+}
+
+@media (max-width: 960px) {
+  .filter-toolbar,
+  .message-filter {
+    grid-template-columns: 1fr;
+  }
+
+  .table-pagination {
+    justify-content: flex-start;
+    overflow-x: auto;
+  }
+}

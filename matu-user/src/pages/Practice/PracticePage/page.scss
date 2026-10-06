@@ -1,0 +1,107 @@
+.practice-page {}
+
+.bullet-list {
+  margin: 12px 0 0;
+  padding-left: 20px;
+  color: var(--text-secondary);
+}
+
+.bullet-list li {
+  margin-bottom: 10px;
+  line-height: 1.75;
+}
+
+.channel-hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding: 24px;
+}
+
+.channel-hero__label {
+  margin-bottom: 8px;
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.channel-hero h2 {
+  margin: 0 0 10px;
+  color: var(--text-primary);
+  font-size: 28px;
+}
+
+.channel-hero p {
+  max-width: 720px;
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.practice-hero {
+  background: var(--bg-card) !important;
+}
+
+.practice-progress-box {
+  min-width: 240px;
+  padding: 16px 18px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--bg-main) 76%, var(--bg-secondary));
+}
+
+.practice-card {
+  height: 100%;
+}
+
+.practice-card .ant-card-body {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.practice-card__content {
+  flex: 1;
+}
+
+.practice-card h3 {
+  margin: 14px 0 8px;
+  color: var(--text-primary);
+  font-size: 18px;
+}
+
+.practice-card p {
+  color: var(--text-secondary);
+  line-height: 1.8;
+}
+
+.practice-card__action,
+.practice-card__action .ant-btn-icon,
+.practice-list-card .ant-btn-primary,
+.practice-list-card .ant-btn-primary .ant-btn-icon {
+  color: #fff;
+}
+
+.practice-card__action {
+  margin-top: auto;
+}
+
+
+@media (max-width: 992px) {
+  .channel-hero {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .channel-hero {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .practice-progress-box {
+    min-width: 0;
+    width: 100%;
+  }
+}

@@ -1,0 +1,71 @@
+.class-page {
+  width: 100%;
+}
+
+.class-hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.class-hero__back-btn {
+  margin-bottom: 14px;
+}
+
+.class-hero__side {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.class-hero__badge {
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+.class-card {
+  height: 100%;
+}
+
+.class-card h3 {
+  margin: 0;
+}
+
+.class-card p {
+  margin: 0;
+  color: var(--text-secondary);
+  line-height: 1.75;
+}
+
+.class-card__meta {
+  color: var(--text-secondary);
+}
+
+.class-search-card .ant-card-body {
+  padding: 16px !important;
+}
+
+.class-search-card .ant-input-search {
+  max-width: 420px;
+}
+
+.class-search-card .ant-input-search-button,
+.class-search-card .ant-input-search-button span,
+.class-search-card .ant-btn-primary,
+.class-search-card .ant-btn-primary span {
+  color: #fff !important;
+}
+
+@media (max-width: 768px) {
+  .class-hero {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .class-hero__side {
+    align-items: flex-start;
+  }
+}

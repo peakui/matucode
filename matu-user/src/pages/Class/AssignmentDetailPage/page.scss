@@ -1,0 +1,50 @@
+.assignment-detail-page {
+  width: 100%;
+}
+
+.assignment-section-title {
+  margin: 0 0 16px;
+}
+
+.assignment-problem-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 14px 16px;
+  border: 1px solid var(--border-color, #f0f0f0);
+  border-radius: 12px;
+}
+
+.assignment-problem-row__content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+}
+
+.assignment-problem-row__title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.assignment-problem-row__title-wrap h4 {
+  margin: 0;
+}
+
+.assignment-problem-row__index {
+  color: var(--primary);
+  font-weight: 700;
+}
+
+@media (max-width: 768px) {
+  .assignment-problem-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .assignment-problem-row button {
+    width: 100%;
+  }
+}

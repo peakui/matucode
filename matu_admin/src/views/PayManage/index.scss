@@ -1,0 +1,59 @@
+@use '@/styles/variables.scss' as *;
+
+.pay-manage-page {
+  display: grid;
+  gap: 20px;
+
+  &__content {
+    border: none;
+    border-radius: 14px;
+    box-shadow: $shadow-base;
+  }
+}
+
+.filter-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.filter-actions {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.table-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: 18px;
+}
+
+.dialog-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.refund-dialog__alert {
+  margin-bottom: 16px;
+}
+
+@media (max-width: 1200px) {
+  .filter-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 960px) {
+  .filter-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .table-pagination {
+    justify-content: flex-start;
+    overflow-x: auto;
+  }
+}

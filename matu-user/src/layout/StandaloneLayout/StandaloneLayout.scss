@@ -1,0 +1,17 @@
+.standalone-shell {
+  min-height: 100vh;
+  background: var(--bg-main);
+}
+
+.standalone-theme-switch {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 20;
+}
+
+.standalone-theme-switch .ant-btn {
+  background: var(--bg-card) !important;
+  color: var(--text-primary) !important;
+  border-color: var(--border) !important;
+}

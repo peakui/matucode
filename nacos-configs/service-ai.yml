@@ -1,0 +1,223 @@
+# Keep this file ASCII-only: see shared-common.yml for why.
+server:
+  port: 9012
+
+spring:
+  main:
+    web-application-type: servlet
+
+  mvc:
+    async:
+      request-timeout: 180000
+
+  jackson:
+    default-property-inclusion: non_null
+
+  # Schema predates Flyway: baseline at 0 so Flyway records history without
+  # re-creating existing tables. New migrations start at V2.
+  # NOTE: this datasource is a cloud PostgreSQL (Aliyun RDS); enabling Flyway
+  # creates flyway_schema_history there on first start.
+  flyway:
+    baseline-on-migrate: true
+    baseline-version: 0
+  datasource:
+    # This Aliyun RDS instance has SSL disabled: sslmode=verify-full (and require)
+    # fail with "server does not support SSL connections". Keep sslmode=disable
+    # until SSL is enabled on the instance, then switch back to verify-full and
+    # add sslrootcert.
+    url: jdbc:postgresql://${AI_PG_HOST:127.0.0.1}:${AI_PG_PORT:5432}/${AI_PG_DATABASE:matucode}?sslmode=disable&connectTimeout=5&socketTimeout=30
+    username: ${AI_PG_USERNAME:postgres}
+    password: ${AI_PG_PASSWORD:}
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: 8
+      minimum-idle: 1
+      connection-timeout: 5000
+      validation-timeout: 3000
+      idle-timeout: 600000
+      max-lifetime: 1800000
+
+  data:
+    redis:
+      # AI cache, session memory and rate limiting use database 2.
+      # host / port / password are provided by shared-common.yml
+      database: 2
+      connect-timeout: 5s
+
+  rabbitmq:
+    # If using the RabbitMQ from Docker Compose, set host to rabbitmq.
+    # If using a cloud RabbitMQ, put its domain or IP here.
+    host: ${RABBITMQ_HOST:127.0.0.1}
+    port: ${RABBITMQ_PORT:5672}
+    username: ${RABBITMQ_USERNAME:admin}
+    password: ${RABBITMQ_PASSWORD:}
+    virtual-host: ${RABBITMQ_VHOST:/}
+    connection-timeout: 5s
+
+    listener:
+      simple:
+        acknowledge-mode: auto
+        concurrency: 1
+        max-concurrency: 4
+        prefetch: 1
+        default-requeue-rejected: false
+        retry:
+          enabled: false
+
+    template:
+      mandatory: true
+      retry:
+        enabled: true
+        initial-interval: 1000ms
+        max-attempts: 3
+        max-interval: 5000ms
+        multiplier: 2
+
+sa-token:
+  token-name: Authorization
+  token-prefix: Bearer
+  timeout: 2592000
+  active-timeout: -1
+  is-share: true
+  is-read-header: true
+  is-read-cookie: false
+  is-log: false
+
+  alone-redis:
+    # The session store must use the same Redis and database 0 as
+    # service-auth and gateway.
+    host: ${REDIS_HOST:127.0.0.1}
+    port: ${REDIS_PORT:6379}
+    database: 0
+    password: ${REDIS_PASSWORD:}
+    timeout: 5s
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    operations-sorter: alpha
+    tags-sorter: alpha
+
+  api-docs:
+    path: /v3/api-docs
+
+ai:
+  model:
+    # Chat model endpoint
+    # Must be the full chat-completions endpoint: the client posts to this URL
+    # verbatim (no path is appended). https://api.deepseek.com alone returns 404.
+    chat-url: ${AI_CHAT_URL:https://api.deepseek.com/chat/completions}
+    chat-api-key: ${AI_CHAT_API_KEY:}
+    chat-model: ${AI_CHAT_MODEL:deepseek-flash}
+
+    # Embedding model endpoint
+    # Chat and Embedding may use different domains, different providers and
+    # different API keys.
+    embedding-url: ${AI_EMBEDDING_URL:https://your-endpoint.cn-beijing.maas.aliyuncs.com/api/v1/services/embeddings/text-embedding/text-embedding}
+    embedding-api-key: ${AI_EMBEDDING_API_KEY:}
+    embedding-model: ${AI_EMBEDDING_MODEL:qwen3.7-text-embedding}
+
+    # HTTP connect timeout
+    connect-timeout-ms: 5000
+
+    # Model response read timeout
+    read-timeout-ms: 120000
+
+    # Retrying mid-stream can duplicate output, so it is disabled by default
+    max-retries: 0
+
+  security:
+    # Max requests per user per minute
+    rate-limit-per-minute: 20
+
+    # Max concurrent AI requests per user
+    concurrent-limit: 2
+
+    # Max characters in a single prompt
+    max-prompt-chars: 12000
+
+    # Max output tokens per request
+    max-output-tokens: 2000
+
+  agent:
+    # Max planning steps per Agent run
+    max-steps: 6
+
+    # Max tool calls per request
+    max-tool-calls: 4
+
+    # Enable the native function-calling loop (executes MCP tools the model
+    # requests and feeds results back). Kill switch: false falls back to a
+    # single tool-less turn.
+    tool-loop-enabled: true
+
+    # Hard cap on characters of a single tool result fed back to the model.
+    max-tool-result-chars: 8000
+
+    # Async task retention, in seconds
+    task-ttl-seconds: 3600
+
+  record:
+    # AI chat history is persisted to local MySQL so it survives restarts and can
+    # be listed. Redis still holds the recent context (ConversationMemory); this
+    # is only the durable record. Separate from spring.datasource, which stays on
+    # PostgreSQL for pgvector RAG -- see AiRecordStore for why.
+    enabled: true
+    url: jdbc:mysql://${MYSQL_HOST:127.0.0.1}:3306/matu_ai?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&rewriteBatchedStatements=true
+    username: ${MYSQL_USERNAME:root}
+    password: ${MYSQL_PASSWORD:}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    maximum-pool-size: 5
+    minimum-idle: 1
+    connection-timeout-ms: 5000
+
+  rag:
+    # Whether RAG is enabled
+    enabled: true
+
+    # Max knowledge chunks returned per query
+    top-k: 5
+
+    # Minimum similarity score
+    min-score: 0.70
+
+    # Must match the actual embedding output dimension.
+    # qwen3.7-text-embedding returns 1024-dim vectors; a mismatch makes the
+    # pgvector column reject every insert/search.
+    embedding-dimension: 1024
+
+    # Can be temporarily set to true for the first pgvector table init.
+    # Set back to false once initialized.
+    auto-init: false
+
+  a2a:
+    # This service exposes an Agent Card capability endpoint.
+    # It is not yet a full A2A protocol implementation.
+    enabled: false
+
+    # Agent name
+    agent-name: matu-ai
+
+  mcp:
+    # Enabled: service-mcp exposes course / OJ / web-fetch tools over JSON-RPC.
+    enabled: true
+
+    # MCP tool call timeout
+    request-timeout-ms: 10000
+
+    # The MCP client uses a plain WebClient (no load balancer), so the url must
+    # be a concrete host:port. api-key must equal service-mcp.mcp.token.
+    servers:
+      - name: matu-mcp
+        url: http://127.0.0.1:9013/mcp
+        api-key: ${MCP_SERVICE_TOKEN:}
+        enabled: true
+        allow-tools:
+          - course_search
+          - course_detail
+          - oj_problem_search
+          - oj_problem_detail
+          - oj_submission_list
+          - oj_submission_detail
+          - web_fetch
+          - web_search

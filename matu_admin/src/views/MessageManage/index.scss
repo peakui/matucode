@@ -1,0 +1,85 @@
+@use '@/styles/variables.scss' as *;
+
+.message-manage-page {
+  display: grid;
+  gap: 20px;
+
+  &__filter,
+  &__table {
+    border: none;
+    border-radius: 14px;
+    box-shadow: $shadow-base;
+  }
+
+  &__table {
+    .el-card__body {
+      padding-bottom: 18px;
+    }
+  }
+}
+
+.filter-toolbar {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.filter-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.table-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: 18px;
+}
+
+.conversation-detail {
+  display: grid;
+  gap: 16px;
+
+  &__section-title {
+    margin-top: 4px;
+    font-size: 15px;
+    font-weight: 600;
+    color: $text-color;
+  }
+}
+
+.message-filter {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 16px;
+
+  .el-date-editor {
+    grid-column: span 2;
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+}
+
+@media (max-width: 960px) {
+  .filter-toolbar,
+  .filter-grid,
+  .message-filter {
+    grid-template-columns: 1fr;
+  }
+
+  .message-filter .el-date-editor {
+    grid-column: auto;
+  }
+
+  .table-pagination {
+    justify-content: flex-start;
+    overflow-x: auto;
+  }
+}

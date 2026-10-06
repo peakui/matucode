@@ -1,0 +1,141 @@
+.course-manage-page {
+  width: 100%;
+}
+
+.course-manage-hero {
+  padding: 0;
+}
+
+.course-manage-hero .ant-space {
+  align-items: stretch;
+}
+
+.course-manage-hero .ant-space-item:first-child {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.course-manage-back-btn {
+  align-self: flex-start;
+  width: fit-content;
+}
+
+.course-manage-hero h2 {
+  margin: 0 0 10px;
+  color: var(--text-primary);
+  font-size: 28px;
+}
+
+.course-manage-hero p {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.course-manage-card {
+  padding: 4px !important;
+}
+
+.course-manage-card .ant-card-body {
+  padding: 20px !important;
+}
+
+.course-manage-toolbar {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.course-manage-summary-grid {
+  display: grid;
+  flex: 1;
+  grid-template-columns: repeat(4, minmax(120px, 1fr));
+  gap: 12px;
+}
+
+.course-manage-title-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.course-manage-title-cell strong {
+  color: var(--text-primary);
+  font-size: 15px;
+}
+
+.course-manage-title-cell span {
+  color: var(--text-secondary);
+  font-size: 13px;
+}
+
+.course-manage-loading {
+  display: flex;
+  justify-content: center;
+  padding: 48px 0;
+}
+
+.course-manage-table .ant-table {
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.course-manage-denied {
+  max-width: 640px;
+  margin: 48px auto 0;
+  text-align: center;
+}
+
+.course-manage-denied .ant-card-body {
+  padding: 44px 32px !important;
+}
+
+.course-manage-denied__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  margin-bottom: 18px;
+  border-radius: 20px;
+  background: color-mix(in srgb, var(--primary) 12%, var(--bg-secondary));
+  color: var(--primary);
+  font-size: 30px;
+}
+
+.course-manage-denied h2 {
+  margin: 0 0 10px;
+  color: var(--text-primary);
+  font-size: 26px;
+}
+
+.course-manage-denied p {
+  max-width: 460px;
+  margin: 0 auto 22px;
+  color: var(--text-secondary);
+  line-height: 1.8;
+}
+
+.course-manage-denied__actions {
+  justify-content: center;
+}
+
+@media (max-width: 992px) {
+  .course-manage-toolbar {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .course-manage-summary-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .course-manage-summary-grid {
+    grid-template-columns: 1fr;
+  }
+}

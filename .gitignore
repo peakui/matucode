@@ -1,0 +1,69 @@
+# ==========================================================================
+# matu monorepo .gitignore
+# Each subproject also ships its own .gitignore; this file adds repo-level
+# rules and a safety net for stray build output.
+# ==========================================================================
+
+# ---- secrets & local config (never commit) ----
+.env
+.env.local
+.env.*.local
+!.env.example
+**/application-*.local.yml
+**/application-*.local.yaml
+
+# ---- local tooling / agent state ----
+.claude/
+.local/
+.logs/
+.tools/
+__pycache__/
+*.pyc
+
+# ---- OS / editor ----
+.DS_Store
+Thumbs.db
+.idea/
+*.iml
+*.iws
+*.ipr
+.vscode/*
+!.vscode/extensions.json
+
+# ---- Java / Maven ----
+target/
+*.class
+.mvn/wrapper/maven-wrapper.jar
+
+# ---- Node ----
+node_modules/
+dist/
+dist-ssr/
+*.tsbuildinfo
+.eslintcache
+
+# ---- Flutter / Dart ----
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+build/
+coverage/
+**/ios/Flutter/ephemeral/
+**/macos/Flutter/ephemeral/
+**/linux/flutter/ephemeral/
+**/windows/flutter/ephemeral/
+**/android/.gradle/
+**/android/app/debug/
+**/android/app/profile/
+**/android/app/release/
+
+# ---- uni-app / HBuilderX ----
+unpackage/
+.hbuilderx/
+
+# ---- sandbox runtime ----
+sandbox-data/
+tmpCode/
+
+# ---- misc ----
+*.log

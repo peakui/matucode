@@ -1,0 +1,43 @@
+# Keep this file ASCII-only: see shared-common.yml for why.
+server:
+  port: 9001
+
+spring:
+  # The matu_auth schema already existed before Flyway was enabled (the mini-app's
+  # mini-local profile applied V1/V2 under mini_schema_history). Baseline at 2 so
+  # Flyway creates flyway_schema_history without re-running those migrations.
+  flyway:
+    baseline-on-migrate: true
+    baseline-version: 2
+  datasource:
+    url: jdbc:mysql://${MYSQL_HOST:127.0.0.1}:${MYSQL_PORT:3306}/matu_auth?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai
+    username: ${MYSQL_USERNAME:root}
+    password: ${MYSQL_PASSWORD:}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  data:
+    redis:
+      # host / port / password / timeout are provided by shared-common.yml
+      database: 0
+
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+app:
+  auth:
+    register-email-code-expire-minutes: 5
+    register-email-code-limit-seconds: 60
+
+sa-token:
+  token-name: Authorization
+  token-prefix: Bearer
+  timeout: 2592000
+  active-timeout: -1
+  is-share: true
+  is-read-header: true
+  is-read-cookie: false
+  is-log: true
+  alone-redis:
+    database: 0
+    host: ${REDIS_HOST:127.0.0.1}
+    port: ${REDIS_PORT:6379}

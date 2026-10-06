@@ -1,0 +1,277 @@
+@use '@/styles/variables.scss' as *;
+
+.course-manage-page {
+  display: grid;
+  gap: 20px;
+
+  &__filter,
+  &__table {
+    border: none;
+    border-radius: 14px;
+    box-shadow: $shadow-base;
+  }
+
+  &__table {
+    .el-card__body {
+      padding-bottom: 18px;
+    }
+  }
+}
+
+.filter-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.table-pagination,
+.dialog-footer,
+.course-detail__toolbar,
+.course-detail__chapter-head,
+.course-detail__chapter-actions,
+.course-detail__video-meta,
+.course-detail__article-meta {
+  display: flex;
+  align-items: center;
+}
+
+.table-pagination,
+.dialog-footer {
+  justify-content: flex-end;
+}
+
+.table-pagination {
+  margin-top: 18px;
+}
+
+.course-owner-cell {
+  display: grid;
+  gap: 4px;
+
+  strong {
+    color: $text-color;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  span {
+    color: $text-secondary;
+    font-size: 12px;
+  }
+}
+
+.course-form__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin-bottom: 16px;
+
+  &--single {
+    grid-template-columns: 1fr;
+  }
+}
+
+.course-form__block {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.course-form__label {
+  color: $text-secondary;
+  font-size: 13px;
+}
+
+.course-detail {
+  display: grid;
+  gap: 16px;
+
+  &__item {
+    display: grid;
+    gap: 8px;
+
+    span {
+      color: $text-secondary;
+      font-size: 13px;
+    }
+
+    strong,
+    p {
+      margin: 0;
+      color: $text-color;
+      line-height: 1.7;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+  }
+
+  &__toolbar {
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    margin-bottom: 4px;
+  }
+
+  &__chapter-list,
+  &__article-list {
+    display: grid;
+    gap: 16px;
+  }
+
+  &__chapter-card,
+  &__article-item {
+    padding: 16px;
+    border: 1px solid rgba(148, 163, 184, 0.24);
+    border-radius: 14px;
+    background: #f8fafc;
+  }
+
+  &__chapter-head {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 12px;
+  }
+
+  &__chapter-title,
+  &__article-head,
+  &__video-head,
+  &__video-title {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__chapter-badge,
+  &__video-badge,
+  &__article-badge {
+    display: inline-flex;
+    width: fit-content;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: rgba(59, 130, 246, 0.12);
+    color: $primary-color;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  &__chapter-title {
+    strong {
+      color: $text-color;
+      font-size: 15px;
+    }
+
+    p {
+      margin: 0;
+      color: $text-secondary;
+      line-height: 1.7;
+    }
+  }
+
+  &__chapter-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  &__video-list {
+    display: grid;
+    gap: 12px;
+    padding-left: 16px;
+    border-left: 2px solid rgba(59, 130, 246, 0.14);
+  }
+
+  &__video-item {
+    padding: 12px 14px;
+    border-radius: 12px;
+    background: #ffffff;
+  }
+
+  &__video-head {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  &__video-title {
+    strong {
+      color: $text-color;
+      font-size: 14px;
+    }
+  }
+
+  &__video-tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  &__video-item p {
+    display: block;
+    margin: 8px 0 0;
+    color: $text-secondary;
+    line-height: 1.7;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+
+  &__video-meta,
+  &__article-meta {
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+    color: $text-secondary;
+    font-size: 13px;
+  }
+
+  &__article-head {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+
+    strong {
+      color: $text-color;
+      font-size: 15px;
+    }
+  }
+
+  &__article-item p {
+    margin: 8px 0 0;
+    color: $text-secondary;
+    line-height: 1.7;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+
+  &__empty {
+    margin: 0;
+    color: $text-secondary;
+    text-align: center;
+  }
+}
+
+@media (max-width: 1200px) {
+  .filter-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 960px) {
+  .filter-grid,
+  .course-form__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .table-pagination,
+  .dialog-footer,
+  .course-detail__toolbar,
+  .course-detail__chapter-head,
+  .course-detail__chapter-actions {
+    justify-content: flex-start;
+    overflow-x: auto;
+  }
+}

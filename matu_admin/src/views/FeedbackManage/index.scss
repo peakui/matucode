@@ -1,0 +1,132 @@
+@use '@/styles/variables.scss' as *;
+
+.feedback-manage-page {
+  display: grid;
+  gap: 20px;
+
+  &__filter,
+  &__table {
+    border: none;
+    border-radius: 14px;
+    box-shadow: $shadow-base;
+  }
+
+  &__table {
+    .el-card__body {
+      padding-bottom: 18px;
+    }
+  }
+}
+
+.filter-toolbar {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.feedback-filter-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.feedback-process-form__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.dialog-footer,
+.table-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.table-pagination {
+  margin-top: 18px;
+}
+
+.feedback-detail {
+  display: grid;
+  gap: 16px;
+
+  &__item {
+    display: grid;
+    gap: 8px;
+
+    span {
+      color: $text-secondary;
+      font-size: 13px;
+    }
+
+    strong,
+    p,
+    pre {
+      margin: 0;
+      color: $text-color;
+      line-height: 1.7;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    pre {
+      padding: 12px;
+      border-radius: 10px;
+      background: #f8fafc;
+      border: 1px solid $border-color;
+    }
+  }
+}
+
+.attachment-list {
+  display: grid;
+  gap: 8px;
+
+  a {
+    color: $primary-color;
+    word-break: break-all;
+  }
+}
+
+.process-summary {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 16px;
+  padding: 14px;
+  border-radius: 12px;
+  background: #f8fafc;
+  border: 1px solid $border-color;
+
+  strong {
+    color: $text-color;
+  }
+
+  p {
+    margin: 0;
+    color: $text-secondary;
+    line-height: 1.7;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+}
+
+@media (max-width: 1200px) {
+  .feedback-filter-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 960px) {
+  .filter-toolbar,
+  .feedback-filter-grid,
+  .feedback-process-form__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .table-pagination {
+    justify-content: flex-start;
+    overflow-x: auto;
+  }
+}

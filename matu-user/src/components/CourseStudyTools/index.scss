@@ -1,0 +1,17 @@
+.study-tools__body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.study-tools__input,
+.study-tools__input textarea {
+  width: 100% !important;
+  color: #000 !important;
+  background: #fff !important;
+}
+
+.study-tools__actions {
+  display: flex;
+  justify-content: flex-end;
+}

@@ -1,0 +1,64 @@
+# Keep this file ASCII-only: see shared-common.yml for why.
+server:
+  port: 9011
+
+spring:
+  # Schema predates Flyway: baseline at 0 so Flyway records history without
+  # re-creating existing tables. New migrations start at V2.
+  flyway:
+    baseline-on-migrate: true
+    baseline-version: 0
+  datasource:
+    url: jdbc:mysql://${MYSQL_HOST:127.0.0.1}:${MYSQL_PORT:3306}/matu_info?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    username: ${MYSQL_USERNAME:root}
+    password: ${MYSQL_PASSWORD:}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  cloud:
+    nacos:
+      discovery:
+        server-addr: ${NACOS_SERVER_ADDR:127.0.0.1:8848}
+        username: ${NACOS_USERNAME:nacos}
+        password: ${NACOS_PASSWORD:}
+
+  data:
+    redis:
+      # host / port / password are provided by shared-common.yml
+      database: 0
+      timeout: 3000ms
+
+sa-token:
+  token-name: Authorization
+  token-prefix: Bearer
+  timeout: 2592000
+  active-timeout: -1
+  is-concurrent: true
+  is-share: true
+  token-style: uuid
+  is-log: true
+  is-read-header: true
+  is-read-cookie: false
+  is-read-body: false
+  alone-redis:
+    database: 1
+    host: ${REDIS_HOST:127.0.0.1}
+    port: ${REDIS_PORT:6379}
+    password: ${REDIS_PASSWORD:}
+    timeout: 3000ms
+
+springdoc:
+  api-docs:
+    enabled: true
+  swagger-ui:
+    enabled: true
+
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 5000
+        readTimeout: 10000
+        loggerLevel: basic
+
+logging:
+  level:
+    com.peakui.info.feign: info

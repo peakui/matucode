@@ -1,0 +1,37 @@
+server:
+  port: ${SERVER_PORT:8092}
+
+spring:
+  application:
+    name: service-search
+  config:
+    import: "optional:nacos:${spring.application.name}.yml?group=${NACOS_GROUP:nacos}"
+  cloud:
+    nacos:
+      server-addr: ${NACOS_SERVER_ADDR:127.0.0.1:8848}
+      username: ${NACOS_USERNAME:nacos}
+      password: ${NACOS_PASSWORD:}
+      discovery:
+        server-addr: ${NACOS_SERVER_ADDR:127.0.0.1:8848}
+        username: ${NACOS_USERNAME:nacos}
+        password: ${NACOS_PASSWORD:}
+      config:
+        server-addr: ${NACOS_SERVER_ADDR:127.0.0.1:8848}
+        username: ${NACOS_USERNAME:nacos}
+        password: ${NACOS_PASSWORD:}
+        file-extension: yml
+        group: ${NACOS_GROUP:nacos}
+
+search:
+  elasticsearch:
+    # Keep these names in sync with the Nacos config (service-search.yml) and .env:
+    # the Nacos config takes precedence, so a mismatch here only shows up as a
+    # silent fallback to the default URL when the Nacos import fails.
+    url: ${ES_URL:http://127.0.0.1:9200}
+    index: ${ES_INDEX:matu_public_content}
+    username: ${ES_USERNAME:}
+    password: ${ES_PASSWORD:}
+  sync:
+    token: ${SEARCH_SYNC_TOKEN:}
+    fixed-delay-ms: ${SEARCH_SYNC_FIXED_DELAY_MS:1800000}
+    initial-delay-ms: ${SEARCH_SYNC_INITIAL_DELAY_MS:30000}

@@ -1,0 +1,8 @@
+server:
+  port: 8091
+
+# Shared secret checked against the `auth` request header on /api/judge/execute.
+# Empty means the endpoint rejects every request (fail closed); set it to the
+# same value as service-oj's oj.sandbox.auth-header-value.
+sandbox:
+  auth-secret: ${SANDBOX_AUTH_SECRET:}

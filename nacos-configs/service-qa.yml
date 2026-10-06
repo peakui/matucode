@@ -1,0 +1,45 @@
+# Keep this file ASCII-only: see shared-common.yml for why.
+server:
+  port: 9004
+
+spring:
+  # Schema predates Flyway: baseline at 0 so Flyway records history without
+  # re-creating existing tables. New migrations start at V2.
+  flyway:
+    baseline-on-migrate: true
+    baseline-version: 0
+  datasource:
+    url: jdbc:mysql://${MYSQL_HOST:127.0.0.1}:${MYSQL_PORT:3306}/matu_qa?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai
+    username: ${MYSQL_USERNAME:root}
+    password: ${MYSQL_PASSWORD:}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  data:
+    redis:
+      # host / port / password / timeout are provided by shared-common.yml
+      database: 3
+
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+sa-token:
+  token-name: Authorization
+  token-prefix: Bearer
+  timeout: 2592000
+  active-timeout: -1
+  is-share: true
+  is-read-header: true
+  is-read-cookie: false
+  is-log: true
+  alone-redis:
+    database: 0
+    host: ${REDIS_HOST:127.0.0.1}
+    port: ${REDIS_PORT:6379}
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    operations-sorter: alpha
+    tags-sorter: alpha
+  api-docs:
+    path: /v3/api-docs

@@ -1,0 +1,105 @@
+@use '@/styles/variables.scss' as *;
+
+.platform-metric-manage-page {
+  display: grid;
+  gap: 20px;
+
+  &__filter,
+  &__table {
+    border: none;
+    border-radius: 14px;
+    box-shadow: $shadow-base;
+  }
+
+  &__table {
+    .el-card__body {
+      padding-bottom: 18px;
+    }
+  }
+}
+
+.metric-latest {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 16px;
+
+  &__card {
+    display: grid;
+    gap: 6px;
+    padding: 16px 18px;
+    border: 1px solid #eef2f7;
+    border-radius: 12px;
+    background: #f8fafc;
+
+    span {
+      color: $text-secondary;
+      font-size: 13px;
+    }
+
+    strong {
+      color: #1d4ed8;
+      font-size: 26px;
+      font-weight: 800;
+    }
+
+    em {
+      color: #98a2b3;
+      font-size: 12px;
+      font-style: normal;
+    }
+  }
+
+  &__empty {
+    margin: 0;
+    color: $text-secondary;
+    font-size: 14px;
+  }
+}
+
+.filter-toolbar {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.filter-grid {
+  display: grid;
+  gap: 16px;
+}
+
+.metric-form__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.metric-form {
+  .el-date-editor.el-input,
+  .el-input-number {
+    width: 100%;
+  }
+}
+
+.dialog-footer,
+.table-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.table-pagination {
+  margin-top: 18px;
+}
+
+@media (max-width: 960px) {
+  .filter-toolbar,
+  .metric-form__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .table-pagination {
+    justify-content: flex-start;
+    overflow-x: auto;
+  }
+}

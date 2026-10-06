@@ -1,0 +1,23 @@
+# AI 服务只在本地保留 Nacos 连接入口；业务配置全部放在 Nacos 的 service-ai.yml。
+spring:
+  application:
+    name: service-ai
+  config:
+    import:
+      - "optional:nacos:shared-common.yml?group=${NACOS_GROUP:nacos}&refreshEnabled=true"
+      - "optional:nacos:${spring.application.name}.yml?group=${NACOS_GROUP:nacos}"
+  cloud:
+    nacos:
+      server-addr: ${NACOS_SERVER_ADDR:127.0.0.1:8848}
+      username: ${NACOS_USERNAME:nacos}
+      password: ${NACOS_PASSWORD:}
+      discovery:
+        server-addr: ${NACOS_SERVER_ADDR:127.0.0.1:8848}
+        username: ${NACOS_USERNAME:nacos}
+        password: ${NACOS_PASSWORD:}
+      config:
+        server-addr: ${NACOS_SERVER_ADDR:127.0.0.1:8848}
+        username: ${NACOS_USERNAME:nacos}
+        password: ${NACOS_PASSWORD:}
+        file-extension: yml
+        group: ${NACOS_GROUP:nacos}

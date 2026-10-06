@@ -1,0 +1,106 @@
+.contest-section-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.contest-section-header h3 {
+  margin: 6px 0 0;
+  color: var(--text-primary);
+}
+
+.contest-tabs-card {
+  overflow: hidden;
+}
+
+.contest-tab-panel {
+  padding-top: 4px;
+}
+
+.contest-problem-list {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 16px;
+  width: 100%;
+  text-align: left;
+}
+
+.contest-problem-list > .practice-list-card {
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .contest-section-header {
+    flex-direction: column;
+  }
+}
+
+.class-detail-page {
+  width: 100%;
+}
+
+.practice-list-hero {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.practice-list-badge {
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+.practice-list-card__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.practice-list-card__content {
+  flex: 1;
+}
+
+.practice-list-card__title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.practice-list-card__title-wrap h3,
+.practice-list-card__desc {
+  margin: 0;
+}
+
+.practice-list-card__index {
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.practice-list-card__desc {
+  margin-top: 12px;
+  color: var(--text-secondary);
+  line-height: 1.75;
+}
+
+.practice-list-card__action {
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .practice-list-hero,
+  .practice-list-card__row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .practice-list-card__action {
+    width: 100%;
+  }
+}

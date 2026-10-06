@@ -1,0 +1,23 @@
+{
+  "settings": {
+    "number_of_shards": 1,
+    "number_of_replicas": 0
+  },
+  "mappings": {
+    "dynamic": "strict",
+    "properties": {
+      "id": {"type": "keyword"},
+      "type": {"type": "keyword"},
+      "title": {"type": "text", "analyzer": "standard"},
+      "summary": {"type": "text", "analyzer": "standard"},
+      "tags": {"type": "text", "analyzer": "standard"},
+      "categoryName": {"type": "text", "analyzer": "standard"},
+      "difficulty": {"type": "integer"},
+      "coverUrl": {"type": "keyword", "index": false, "doc_values": false},
+      "status": {"type": "integer"},
+      "targetPath": {"type": "keyword", "index": false, "doc_values": false},
+      "publishedAt": {"type": "date", "format": "strict_date_optional_time"},
+      "createdAt": {"type": "date", "format": "strict_date_optional_time"}
+    }
+  }
+}

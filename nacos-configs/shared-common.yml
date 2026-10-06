@@ -1,0 +1,85 @@
+# ==========================================================================
+# Nacos shared config
+#   dataId: shared-common.yml    group: nacos
+#
+# Every service must import it in application.yml, and it must come BEFORE
+# the service-specific config:
+#
+#   spring:
+#     config:
+#       import:
+#         - optional:nacos:shared-common.yml?group=nacos&refreshEnabled=true
+#         - optional:nacos:${spring.application.name}.yml?group=nacos
+#
+# Why the order matters: in spring.config.import the LAST declared entry wins.
+# The shared config goes first as a fallback; the service-specific config comes
+# after it so it can override shared values when needed.
+#
+# Only values that are identical across all services belong here. These are
+# deliberately left in each service's own file instead:
+#   - spring.data.redis.database / sa-token.alone-redis.*
+#     Services isolate themselves with different db numbers (0/1/2/3/5), and the
+#     sa-token session store uses a different db than the business store;
+#     merging them would change behavior for service-oj / service-message, which
+#     do not configure alone-redis.
+#   - spring.data.redis.connect-timeout
+#     Originally set only by service-ai / service-oj where it means "fail fast
+#     when unreachable"; not universally applicable.
+#   - Service-specific business config (ai / pay / oj / search / file ...).
+#
+# NOTE: keep this file ASCII-only. Spring Cloud Alibaba's NacosDataParserHandler
+# uses String.getBytes() without a charset, so non-ASCII comments break config
+# parsing on a JVM whose default charset is not UTF-8 (e.g. GBK on zh-CN Windows).
+# ==========================================================================
+
+spring:
+  data:
+    redis:
+      host: ${REDIS_HOST:127.0.0.1}
+      port: ${REDIS_PORT:6379}
+      password: ${REDIS_PASSWORD:}
+      # service-file and service-message previously set no timeout; after
+      # importing this file they get 5s. This is the only behavior change this
+      # file introduces, aligning them with the other 11 services.
+      timeout: ${REDIS_TIMEOUT:5s}
+
+  datasource:
+    # Shared by the MySQL services. service-ai uses PostgreSQL and overrides
+    # both of these in its own file.
+    username: ${MYSQL_USERNAME:root}
+    password: ${MYSQL_PASSWORD:}
+
+  cloud:
+    nacos:
+      discovery:
+        # Advertised address other services/gateway use to call this one.
+        # Without this, Spring picks the first non-loopback NIC (e.g. a VMware
+        # virtual adapter), and the gateway routes lb://service-* to that
+        # address, so every request fails with HTTP 500. All services run on
+        # one host, so pin loopback. Override with NACOS_DISCOVERY_IP if split
+        # across machines.
+        ip: ${NACOS_DISCOVERY_IP:127.0.0.1}
+
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+
+security:
+  # The gateway signs the identity headers with identity.secret
+  # (LoginUserRelayFilter), service-interview verifies them and signs its
+  # internal dashboard call with internal.service-secret. Defined here because
+  # gateway, service-interview and service-info all import this file. Without
+  # it, service-interview rejects every /interview/** request with 503.
+  identity:
+    secret: ${IDENTITY_RELAY_SECRET:}
+  internal:
+    service-secret: ${INTERNAL_SERVICE_SECRET:}
+
+# Unified console log format and levels for every service and the gateway.
+# Console only: nothing is written to disk here.
+logging:
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] %logger{36} - %msg%n"
+  level:
+    root: INFO
+    com.peakui: INFO

@@ -1,0 +1,349 @@
+.article-editor-page {
+  width: 90vw;
+  min-height: calc(100vh - 68px);
+  margin: 0 auto;
+  padding: 12px 0 20px;
+}
+
+.article-editor-page__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-height: calc(100vh - 100px);
+}
+
+.article-editor-topbar {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.article-editor-titlebar {
+  padding: 4px 0;
+}
+
+.article-editor-meta-card {
+  padding: 4px !important;
+}
+
+.article-editor-meta-card .ant-card-body {
+  padding: 16px !important;
+}
+
+.article-editor-collab-card {
+  padding: 4px !important;
+}
+
+.article-editor-collab-card .ant-card-body {
+  padding: 16px !important;
+}
+
+.article-editor-collab-card__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 14px;
+}
+
+.article-editor-collab-card__title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-primary);
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.article-editor-collab-card__desc {
+  margin-top: 4px;
+  color: var(--text-secondary);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.article-editor-collab-card__invite {
+  width: 100%;
+}
+
+.article-editor-collab-card__status {
+  margin-top: 12px;
+}
+
+.article-editor-collab-card__status .ant-tag {
+  margin-inline-end: 0;
+}
+
+.article-editor-field-label {
+  margin-bottom: 8px;
+  color: var(--text-primary);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.article-editor-field-label__required {
+  margin-right: 4px;
+  color: #ff4d4f;
+}
+
+.article-editor-select {
+  width: 100%;
+}
+
+.article-editor-learn-hours {
+  width: 100%;
+}
+
+.article-editor-learn-hours .ant-input-number-group-addon {
+  min-width: 56px;
+  white-space: nowrap;
+}
+
+.article-editor-tag-preview {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.article-editor-title-input {
+  padding: 0 !important;
+  color: var(--text-primary) !important;
+  font-size: 34px;
+  font-weight: 800;
+  line-height: 1.35;
+}
+
+.article-editor-title-input input {
+  padding: 0 !important;
+  color: var(--text-primary) !important;
+  font-size: 34px !important;
+  font-weight: 800 !important;
+}
+
+.article-editor-title-input input::placeholder {
+  color: var(--text-secondary) !important;
+}
+
+.article-editor-grid {
+  flex: 1;
+}
+
+.article-editor-grid__col {
+  display: flex;
+}
+
+.article-editor-panel {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-height: 0;
+  padding: 4px !important;
+}
+
+.article-editor-panel .ant-card-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-height: 0;
+  padding: 0 !important;
+}
+
+.article-editor-markdown {
+  overflow: hidden;
+  flex: 1;
+  min-height: 0;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: var(--bg-card);
+  color: #000;
+}
+
+.article-editor-markdown--full {
+  height: 100%;
+}
+
+.article-editor-markdown .w-md-editor {
+  height: 100% !important;
+  min-height: 640px;
+  border: none !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.article-editor-markdown .w-md-editor.w-md-editor-fullscreen {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 2147483000 !important;
+  width: 100vw !important;
+  max-width: none !important;
+  height: 100vh !important;
+  min-height: 100vh !important;
+  border-radius: 0 !important;
+  background: #fff !important;
+}
+
+.article-editor-markdown .w-md-editor.w-md-editor-fullscreen .w-md-editor-content {
+  height: calc(100vh - 29px) !important;
+}
+
+.article-editor-markdown .w-md-editor-toolbar {
+  border-bottom: 1px solid var(--border) !important;
+}
+
+.article-editor-markdown .w-md-editor-toolbar svg,
+.article-editor-markdown .w-md-editor-toolbar button,
+.article-editor-markdown .w-md-editor-toolbar button span,
+.article-editor-markdown .w-md-editor-text-input,
+.article-editor-markdown .w-md-editor-text-pre,
+.article-editor-markdown .w-md-editor-text-pre > code,
+.article-editor-markdown .w-md-editor-text-pre > code *,
+.article-editor-markdown .w-md-editor-text-input::placeholder,
+.article-editor-markdown .wmde-markdown {
+  color: #000 !important;
+}
+
+.article-editor-markdown .wmde-markdown .ant-image {
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+  margin: 16px 0;
+}
+
+.article-editor-markdown .wmde-markdown .markdown-content-image {
+  display: block;
+  width: auto;
+  max-width: min(520px, 100%);
+  max-height: 420px;
+  height: auto;
+  border-radius: 14px;
+  object-fit: contain;
+}
+
+.article-editor-markdown .wmde-markdown .ant-image-mask {
+  border-radius: 14px;
+}
+
+.article-preview-heading {
+  padding: 20px 22px 0;
+  color: var(--text-primary);
+  font-size: 34px;
+  font-weight: 800;
+  line-height: 1.35;
+}
+
+.article-preview-summary {
+  padding: 12px 22px 0;
+  color: var(--text-secondary);
+  font-size: 15px;
+  line-height: 1.85;
+}
+
+.article-preview-content {
+  flex: 1;
+  min-height: 640px;
+  overflow: auto;
+  padding: 24px 22px;
+}
+
+.article-preview-markdown {
+  background: transparent !important;
+  color: var(--text-primary) !important;
+}
+
+.article-preview-markdown,
+.article-preview-markdown h1,
+.article-preview-markdown h2,
+.article-preview-markdown h3,
+.article-preview-markdown p,
+.article-preview-markdown li,
+.article-preview-markdown blockquote,
+.article-preview-markdown code,
+.article-preview-markdown pre,
+.article-preview-markdown strong,
+.article-preview-markdown em,
+.article-preview-markdown a {
+  color: var(--text-primary) !important;
+}
+
+.article-preview-markdown .ant-image {
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+  margin: 16px 0;
+}
+
+.article-preview-markdown .markdown-content-image {
+  display: block;
+  width: auto;
+  max-width: min(520px, 100%);
+  max-height: 420px;
+  height: auto;
+  border-radius: 14px;
+  object-fit: contain;
+  box-shadow: 0 12px 28px rgb(15 23 42 / 10%);
+}
+
+.article-preview-markdown .ant-image-mask {
+  border-radius: 14px;
+}
+
+.article-preview-markdown table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.article-preview-markdown th,
+.article-preview-markdown td {
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+}
+
+.article-preview-markdown blockquote {
+  margin: 16px 0;
+  padding: 12px 16px;
+  border-left: 4px solid var(--primary);
+  border-radius: 0 12px 12px 0;
+  background: color-mix(in srgb, var(--primary) 8%, var(--bg-secondary));
+}
+
+.article-preview-markdown pre {
+  overflow: auto;
+  padding: 14px;
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--bg-secondary) 88%, var(--bg-main));
+}
+
+@media (max-width: 992px) {
+  .article-editor-page {
+    width: calc(100% - 28px);
+    padding: 10px 0 18px;
+  }
+
+  .article-editor-page__inner,
+  .article-editor-topbar,
+  .article-editor-grid__col,
+  .article-editor-panel,
+  .article-editor-panel .ant-card-body {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+@media (max-width: 768px) {
+  .article-editor-page {
+    width: calc(100% - 20px);
+    padding: 8px 0 14px;
+  }
+
+  .article-editor-title-input,
+  .article-editor-title-input input,
+  .article-preview-heading {
+    font-size: 28px !important;
+  }
+
+  .article-editor-markdown .w-md-editor,
+  .article-preview-content {
+    min-height: 460px;
+  }
+}

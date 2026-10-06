@@ -1,0 +1,239 @@
+.class-manage-page {
+  width: 100%;
+}
+
+.class-manage-hero {
+  padding: 0;
+}
+
+.class-manage-back-btn {
+  margin-bottom: 14px;
+}
+
+.class-manage-hero h2 {
+  margin: 0 0 10px;
+  color: var(--text-primary);
+  font-size: 28px;
+}
+
+.class-manage-hero p {
+  max-width: 780px;
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.class-manage-card .ant-card-body {
+  padding: 20px !important;
+}
+
+.class-manage-toolbar,
+.class-manage-problem-toolbar {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.class-manage-summary-grid {
+  display: grid;
+  flex: 1;
+  grid-template-columns: repeat(4, minmax(120px, 1fr));
+  gap: 12px;
+}
+
+.class-manage-search {
+  width: 260px;
+}
+
+.class-manage-type-select,
+.class-manage-filter-select {
+  width: 130px;
+}
+
+.class-manage-loading {
+  display: flex;
+  justify-content: center;
+  padding: 48px 0;
+}
+
+.class-manage-table .ant-table {
+  overflow: hidden;
+  border-radius: 16px;
+}
+
+.class-manage-resource-cell,
+.class-manage-problem-cell,
+.class-manage-member-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.class-manage-resource-cell strong,
+.class-manage-problem-cell strong,
+.class-manage-member-cell strong {
+  color: var(--text-primary);
+  font-size: 15px;
+}
+
+.class-manage-resource-cell span,
+.class-manage-problem-cell span,
+.class-manage-member-cell span {
+  color: var(--text-secondary);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.class-manage-toolbar-desc,
+.class-manage-muted-text {
+  margin: 4px 0 0;
+  color: var(--text-secondary);
+  font-size: 13px;
+}
+
+.class-manage-detail__header {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 16px;
+  border-radius: 16px;
+  background: var(--bg-secondary);
+}
+
+.class-manage-detail__header h3 {
+  margin: 0 0 8px;
+  color: var(--text-primary);
+  font-size: 20px;
+}
+
+.class-manage-detail__header p {
+  margin: 0;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+.class-manage-basic-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.class-manage-basic-grid > div,
+.class-manage-testcase-card {
+  border: 1px solid var(--border-color);
+  border-radius: 14px;
+  background: var(--bg-secondary);
+}
+
+.class-manage-basic-grid > div {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 14px;
+}
+
+.class-manage-basic-grid span {
+  color: var(--text-secondary);
+  font-size: 13px;
+}
+
+.class-manage-basic-grid strong {
+  color: var(--text-primary);
+}
+
+.class-manage-form-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  column-gap: 14px;
+}
+
+.class-manage-form-grid--two {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.class-manage-testcase-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.class-manage-testcase-list__header,
+.class-manage-testcase-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.class-manage-denied {
+  max-width: 640px;
+  margin: 48px auto 0;
+  text-align: center;
+}
+
+.class-manage-denied .ant-card-body {
+  padding: 44px 32px !important;
+}
+
+.class-manage-denied__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  margin-bottom: 18px;
+  border-radius: 20px;
+  background: color-mix(in srgb, var(--primary) 12%, var(--bg-secondary));
+  color: var(--primary);
+  font-size: 30px;
+}
+
+.class-manage-denied h2 {
+  margin: 0 0 10px;
+  color: var(--text-primary);
+  font-size: 26px;
+}
+
+.class-manage-denied p {
+  max-width: 460px;
+  margin: 0 auto 22px;
+  color: var(--text-secondary);
+  line-height: 1.8;
+}
+
+.class-manage-denied__actions {
+  justify-content: center;
+}
+
+.class-manage-page .ant-input-search-button,
+.class-manage-page .ant-input-search-button span,
+.class-manage-page .ant-btn-primary,
+.class-manage-page .ant-btn-primary span {
+  color: #fff !important;
+}
+
+@media (max-width: 992px) {
+  .class-manage-toolbar,
+  .class-manage-problem-toolbar,
+  .class-manage-detail__header {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .class-manage-summary-grid,
+  .class-manage-basic-grid,
+  .class-manage-form-grid,
+  .class-manage-form-grid--two {
+    grid-template-columns: 1fr;
+  }
+
+  .class-manage-search,
+  .class-manage-type-select,
+  .class-manage-filter-select {
+    width: 100%;
+  }
+}

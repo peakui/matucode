@@ -1,0 +1,261 @@
+.problem-workspace {
+  width: 100%;
+}
+
+.problem-page {
+  width: min(96vw, 1720px);
+  margin: 0 auto;
+}
+.problem-back-btn {
+  margin-bottom: 10px;
+}
+.problem-workspace {
+  display: flex;
+  justify-content: center;
+}
+.problem-content-card,
+.problem-editor-card {
+  height: 100%;
+}
+
+.problem-content-card {
+  padding: 8px !important;
+}
+
+.problem-brief-head {
+  margin-bottom: 18px;
+}
+
+.problem-meta-strip {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.problem-meta-chip,
+.problem-status-pill {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--bg-secondary);
+}
+
+.problem-meta-chip span,
+.problem-status-pill span {
+  color: var(--text-secondary);
+  font-size: 12px;
+}
+
+.problem-meta-chip strong,
+.problem-status-pill strong {
+  color: var(--text-primary);
+  font-size: 14px;
+}
+
+.oj-editor-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 980px;
+  padding: 10px !important;
+}
+
+.oj-editor-layout__toolbar {
+  flex-shrink: 0;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border);
+}
+
+.oj-editor-layout__title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+.problem-editor-subtitle {
+  margin-top: 6px;
+  color: var(--text-secondary);
+  font-size: 13px;
+}
+
+.problem-editor-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.problem-status-bar {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, auto));
+  gap: 12px;
+  align-items: stretch;
+}
+
+.problem-status-bar--below-editor {
+  padding-top: 14px;
+}
+
+.oj-editor-layout__main {
+  flex: 1;
+  padding: 14px 0 0;
+}
+
+.code-editor-shell {
+  width: 100%;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+}
+
+.detail-page__title {
+  margin: 14px 0 8px;
+  color: var(--text-primary);
+  font-size: 30px;
+}
+
+.detail-page__content {
+  color: var(--text-secondary);
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.problem-example-block pre {
+  padding: 14px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--bg-secondary);
+  white-space: pre-wrap;
+  color: var(--text-primary);
+}
+
+.problem-analysis {
+  margin-top: 16px;
+}
+
+.problem-analysis__header,
+.oj-result-panel__header,
+.submission-history-item__top,
+.submission-history-item__meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.problem-analysis__header {
+  margin-bottom: 10px;
+  color: var(--text-secondary);
+}
+
+.problem-analysis__header h3,
+.oj-result-panel__header h3,
+.oj-empty-text {
+  margin: 0;
+  color: var(--text-primary);
+}
+
+.oj-result-panel {
+  padding: 14px;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: var(--bg-secondary);
+}
+
+.oj-result-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.oj-result-grid__item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--bg-primary);
+}
+
+.oj-result-grid__item span {
+  color: var(--text-secondary);
+  font-size: 12px;
+}
+
+.oj-result-grid__item strong {
+  color: var(--text-primary);
+  font-size: 13px;
+}
+
+.oj-result-grid__item--full {
+  grid-column: 1 / -1;
+}
+
+.problem-history-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.submission-history-item {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--bg-secondary);
+  padding: 12px;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.submission-history-item:hover,
+.submission-history-item--active {
+  border-color: var(--primary);
+  background: color-mix(in srgb, var(--primary) 6%, var(--bg-secondary));
+}
+
+.submission-history-item__meta {
+  margin-top: 8px;
+  color: var(--text-secondary);
+  font-size: 12px;
+}
+
+.problem-history-drawer .ant-drawer-body {
+  padding-top: 12px;
+}
+
+@media (max-width: 1200px) {
+  .problem-page {
+    width: min(100vw - 24px, 1720px);
+  }
+
+  .problem-meta-strip,
+  .problem-status-bar {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .problem-editor-head,
+  .problem-analysis__header,
+  .submission-history-item__top,
+  .submission-history-item__meta,
+  .oj-result-panel__header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .oj-result-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .oj-editor-layout {
+    min-height: auto;
+  }
+}

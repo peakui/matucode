@@ -1,0 +1,125 @@
+.class-detail-page {
+  width: 100%;
+}
+
+.class-tabs-card {
+  overflow: hidden;
+}
+
+.class-problem-list {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 16px;
+  width: 100%;
+  text-align: left;
+}
+
+.class-problem-list > .practice-list-card {
+  width: 100%;
+}
+
+.class-section-title {
+  margin: 0 0 16px;
+}
+
+.class-assignment-list {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 12px;
+  width: 100%;
+  text-align: left;
+}
+
+.class-assignment-list > .class-assignment-row {
+  width: 100%;
+}
+
+.class-assignment-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 14px 16px;
+  border: 1px solid var(--border-color, #f0f0f0);
+  border-radius: 12px;
+  text-align: left;
+}
+
+.class-assignment-row__content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  flex: 1;
+}
+
+.class-assignment-row__title {
+  font-weight: 600;
+  font-size: 15px;
+  text-align: left;
+}
+
+.practice-list-hero {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.practice-list-badge {
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+.practice-list-card__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.practice-list-card__content {
+  flex: 1;
+}
+
+.practice-list-card__title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.practice-list-card__title-wrap h3,
+.practice-list-card__desc {
+  margin: 0;
+}
+
+.practice-list-card__index {
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.practice-list-card__desc {
+  margin-top: 12px;
+  color: var(--text-secondary);
+  line-height: 1.75;
+}
+
+.practice-list-card__action {
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .practice-list-hero,
+  .practice-list-card__row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .practice-list-card__action {
+    width: 100%;
+  }
+}

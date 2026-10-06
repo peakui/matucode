@@ -1,0 +1,89 @@
+# Keep this file ASCII-only: see shared-common.yml for why.
+server:
+  port: 9005
+
+spring:
+  # Schema predates Flyway: baseline at 0 so Flyway records history without
+  # re-creating existing tables. New migrations start at V2.
+  flyway:
+    baseline-on-migrate: true
+    baseline-version: 0
+  datasource:
+    url: jdbc:mysql://${MYSQL_HOST:127.0.0.1}:${MYSQL_PORT:3306}/matu_oj?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&useSSL=false&allowPublicKeyRetrieval=true
+    username: ${MYSQL_USERNAME:root}
+    password: ${MYSQL_PASSWORD:}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 2
+      connection-timeout: 5000
+      validation-timeout: 3000
+      idle-timeout: 600000
+      max-lifetime: 1800000
+
+  rabbitmq:
+    host: ${RABBITMQ_HOST:127.0.0.1}
+    port: ${RABBITMQ_PORT:5672}
+    username: ${RABBITMQ_USERNAME:admin}
+    password: ${RABBITMQ_PASSWORD:}
+    virtual-host: ${RABBITMQ_VHOST:/}
+    connection-timeout: 5s
+    listener:
+      simple:
+        acknowledge-mode: manual
+        prefetch: 1
+        concurrency: 1
+        max-concurrency: 1
+        default-requeue-rejected: false
+        retry:
+          enabled: false
+
+  data:
+    redis:
+      # host / port / password are provided by shared-common.yml
+      database: 5
+      connect-timeout: 5s
+
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      id-type: auto
+
+sa-token:
+  token-name: satoken
+  timeout: 2592000
+  active-timeout: -1
+  is-concurrent: true
+  is-share: true
+  token-style: uuid
+  is-log: true
+  is-read-header: true
+  is-read-cookie: false
+
+springdoc:
+  api-docs:
+    enabled: true
+    path: /v3/api-docs
+  swagger-ui:
+    enabled: true
+    path: /swagger-ui.html
+    operations-sorter: alpha
+    tags-sorter: alpha
+
+oj:
+  sandbox:
+    type: remote
+    base-url: ${OJ_SANDBOX_BASE_URL:http://127.0.0.1:8091/}
+    execute-path: /api/judge/execute
+    connect-timeout: 3000
+    read-timeout: 20000
+    token: ""
+    auth-header-name: auth
+    auth-header-value: ${OJ_SANDBOX_AUTH_HEADER_VALUE:}
+
+  judge:
+    default-time-limit: 1000
+    default-memory-limit: 256
+    max-code-length: 65535

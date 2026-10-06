@@ -1,0 +1,259 @@
+# Keep this file ASCII-only: see shared-common.yml for why.
+server:
+  port: 8080
+
+spring:
+  main:
+    web-application-type: reactive
+
+  data:
+    redis:
+      # host / port / password / timeout are provided by shared-common.yml
+      database: 0
+
+  cloud:
+    openfeign:
+      client:
+        config:
+          service-auth:
+            connectTimeout: 3000
+            readTimeout: 5000
+            loggerLevel: basic
+
+    gateway:
+      server:
+        webflux:
+          globalcors:
+            add-to-simple-url-handler-mapping: true
+            cors-configurations:
+              '[/**]':
+                allowedOriginPatterns:
+                  - "*"
+                allowedMethods:
+                  - GET
+                  - POST
+                  - PUT
+                  - DELETE
+                  - OPTIONS
+                  - PATCH
+                allowedHeaders:
+                  - "*"
+                exposedHeaders:
+                  - Authorization
+                  - X-User-Id
+                  - X-User-Roles
+                  - Content-Type
+                allowCredentials: true
+                maxAge: 3600
+
+          routes:
+            - id: service-auth
+              uri: lb://service-auth
+              predicates:
+                - Path=/auth/**
+
+            - id: service-post
+              uri: lb://service-post
+              predicates:
+                - Path=/posts/**
+
+            - id: service-check
+              uri: lb://service-check
+              predicates:
+                - Path=/checks/**
+
+            - id: service-qa
+              uri: lb://service-qa
+              predicates:
+                - Path=/qa/**
+
+            - id: service-oj
+              uri: lb://service-oj
+              predicates:
+                - Path=/oj/**
+
+            - id: service-interview
+              uri: lb://service-interview
+              predicates:
+                - Path=/interview/**
+
+            - id: service-file
+              uri: lb://service-file
+              predicates:
+                - Path=/files/**
+
+            - id: service-course
+              uri: lb://service-course
+              predicates:
+                - Path=/courses/**
+
+            - id: service-info
+              uri: lb://service-info
+              predicates:
+                - Path=/dashboard/**,/announcements/**,/configs/**,/feedbacks/**,/admin/info/**
+
+            - id: service-pay
+              uri: lb://service-pay
+              predicates:
+                - Path=/pay/**
+
+            - id: service-ai
+              uri: lb://service-ai
+              predicates:
+                - Path=/ai/**
+
+            - id: service-search
+              uri: lb://service-search
+              predicates:
+                - Path=/search/**
+
+            - id: service-message-ws
+              uri: lb:ws://service-message
+              predicates:
+                - Path=/messages/ws
+
+            - id: service-message
+              uri: lb://service-message
+              predicates:
+                - Path=/messages/**
+
+            - id: service-auth-api-docs
+              uri: lb://service-auth
+              predicates:
+                - Path=/service-auth/v3/api-docs
+              filters:
+                - RewritePath=/service-auth/(?<segment>.*), /${segment}
+
+            - id: service-post-api-docs
+              uri: lb://service-post
+              predicates:
+                - Path=/service-post/v3/api-docs
+              filters:
+                - RewritePath=/service-post/(?<segment>.*), /${segment}
+
+            - id: service-check-api-docs
+              uri: lb://service-check
+              predicates:
+                - Path=/service-check/v3/api-docs
+              filters:
+                - RewritePath=/service-check/(?<segment>.*), /${segment}
+
+            - id: service-qa-api-docs
+              uri: lb://service-qa
+              predicates:
+                - Path=/service-qa/v3/api-docs
+              filters:
+                - RewritePath=/service-qa/(?<segment>.*), /${segment}
+
+            - id: service-oj-api-docs
+              uri: lb://service-oj
+              predicates:
+                - Path=/service-oj/v3/api-docs
+              filters:
+                - RewritePath=/service-oj/(?<segment>.*), /${segment}
+
+            - id: service-interview-api-docs
+              uri: lb://service-interview
+              predicates:
+                - Path=/service-interview/v3/api-docs
+              filters:
+                - RewritePath=/service-interview/(?<segment>.*), /${segment}
+
+            - id: service-file-api-docs
+              uri: lb://service-file
+              predicates:
+                - Path=/service-file/v3/api-docs
+              filters:
+                - RewritePath=/service-file/(?<segment>.*), /${segment}
+
+            - id: service-course-api-docs
+              uri: lb://service-course
+              predicates:
+                - Path=/service-course/v3/api-docs
+              filters:
+                - RewritePath=/service-course/(?<segment>.*), /${segment}
+
+            - id: service-info-api-docs
+              uri: lb://service-info
+              predicates:
+                - Path=/service-info/v3/api-docs
+              filters:
+                - RewritePath=/service-info/(?<segment>.*), /${segment}
+
+            - id: service-message-api-docs
+              uri: lb://service-message
+              predicates:
+                - Path=/service-message/v3/api-docs
+              filters:
+                - RewritePath=/service-message/(?<segment>.*), /${segment}
+
+            - id: service-pay-api-docs
+              uri: lb://service-pay
+              predicates:
+                - Path=/service-pay/v3/api-docs
+              filters:
+                - RewritePath=/service-pay/(?<segment>.*), /${segment}
+
+            - id: service-ai-api-docs
+              uri: lb://service-ai
+              predicates:
+                - Path=/service-ai/v3/api-docs
+              filters:
+                - RewritePath=/service-ai/(?<segment>.*), /${segment}
+
+            - id: service-search-api-docs
+              uri: lb://service-search
+              predicates:
+                - Path=/service-search/v3/api-docs
+              filters:
+                - RewritePath=/service-search/(?<segment>.*), /${segment}
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    urls:
+      - name: service-auth
+        url: /service-auth/v3/api-docs
+      - name: service-post
+        url: /service-post/v3/api-docs
+      - name: service-check
+        url: /service-check/v3/api-docs
+      - name: service-qa
+        url: /service-qa/v3/api-docs
+      - name: service-oj
+        url: /service-oj/v3/api-docs
+      - name: service-interview
+        url: /service-interview/v3/api-docs
+      - name: service-file
+        url: /service-file/v3/api-docs
+      - name: service-course
+        url: /service-course/v3/api-docs
+      - name: service-info
+        url: /service-info/v3/api-docs
+      - name: service-message
+        url: /service-message/v3/api-docs
+      - name: service-pay
+        url: /service-pay/v3/api-docs
+      - name: service-ai
+        url: /service-ai/v3/api-docs
+      - name: service-search
+        url: /service-search/v3/api-docs
+
+sa-token:
+  token-name: Authorization
+  token-prefix: Bearer
+  timeout: 2592000
+  active-timeout: -1
+  is-share: true
+  is-read-header: true
+  is-read-cookie: false
+  is-log: true
+  alone-redis:
+    database: 0
+    host: ${REDIS_HOST:127.0.0.1}
+    port: ${REDIS_PORT:6379}
+
+logging:
+  level:
+    com.peakui.gateway.config.LoginUserRelayFilter: DEBUG
+    com.peakui.gateway.feign.AuthFeignClient: DEBUG
